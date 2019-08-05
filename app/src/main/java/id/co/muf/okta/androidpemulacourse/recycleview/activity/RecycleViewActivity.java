@@ -31,25 +31,17 @@ public class RecycleViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycle_view);
         rvHeroes = findViewById(R.id.rv_heroes);
         rvHeroes.setHasFixedSize(true);
-        ListHeroAdapter listHeroAdapter = new ListHeroAdapter(list);
-        rvHeroes.setAdapter(listHeroAdapter);
-        listHeroAdapter.setOnItemClickCallback(new ListHeroAdapter.OnItemClickCallback() {
-            @Override
-            public void onItemClicked(Hero data) {
-                showSelectedHero(data);
-            }
-        });
         list.addAll(HeroesData.getListData());
         setActionBarTitle(title);
         showRecyclerList();
     }
 
     private void showRecyclerList() {
-        rvHeroes.setLayoutManager(new GridLayoutManager(this, 2));
-        GridHeroAdapter gridHeroAdapter = new GridHeroAdapter(list);
-        rvHeroes.setAdapter(gridHeroAdapter);
+        rvHeroes.setLayoutManager(new LinearLayoutManager(this));
+        ListHeroAdapter listHeroAdapter = new ListHeroAdapter(list);
+        rvHeroes.setAdapter(listHeroAdapter);
 
-        gridHeroAdapter.setOnItemClickCallback(new GridHeroAdapter.OnItemClickCallback() {
+        listHeroAdapter.setOnItemClickCallback(new ListHeroAdapter.OnItemClickCallback() {
             @Override
             public void onItemClicked(Hero data) {
                 showSelectedHero(data);
@@ -96,6 +88,13 @@ public class RecycleViewActivity extends AppCompatActivity {
         rvHeroes.setLayoutManager(new GridLayoutManager(this, 2));
         GridHeroAdapter gridHeroAdapter = new GridHeroAdapter(list);
         rvHeroes.setAdapter(gridHeroAdapter);
+
+        gridHeroAdapter.setOnItemClickCallback(new GridHeroAdapter.OnItemClickCallback() {
+            @Override
+            public void onItemClicked(Hero data) {
+                showSelectedHero(data);
+            }
+        });
     }
 
     private void showRecyclerCardView() {

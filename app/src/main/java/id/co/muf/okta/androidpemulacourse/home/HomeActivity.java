@@ -8,9 +8,12 @@ import android.view.View;
 import android.widget.Button;
 
 import id.co.muf.okta.androidpemulacourse.R;
+import id.co.muf.okta.androidpemulacourse.hitung.MainActivity;
 import id.co.muf.okta.androidpemulacourse.intent.IntentActivity;
 import id.co.muf.okta.androidpemulacourse.intent.MoveActivity;
 import id.co.muf.okta.androidpemulacourse.intent.MoveWithDataActivity;
+import id.co.muf.okta.androidpemulacourse.recycleview.activity.RecycleViewActivity;
+import id.co.muf.okta.androidpemulacourse.viewgroup.ViewGroupActivity;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -35,22 +38,22 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_calculatess:
-                Intent calc = new Intent(HomeActivity.this, MoveActivity.class);
+                Intent calc = new Intent(HomeActivity.this, MainActivity.class);
                 startActivity(calc);
                 break;
 
             case R.id.btn_intent:
-                Intent inte = new Intent(HomeActivity.this, MoveActivity.class);
+                Intent inte = new Intent(HomeActivity.this, IntentActivity.class);
                 startActivity(inte);
                 break;
 
             case R.id.btn_viewgrup:
-                Intent viewgrup = new Intent(HomeActivity.this, MoveActivity.class);
+                Intent viewgrup = new Intent(HomeActivity.this, ViewGroupActivity.class);
                 startActivity(viewgrup);
                 break;
 
             case R.id.btn_rcyleview:
-                Intent rv = new Intent(HomeActivity.this, MoveActivity.class);
+                Intent rv = new Intent(HomeActivity.this, RecycleViewActivity.class);
                 startActivity(rv);
                 break;
         }

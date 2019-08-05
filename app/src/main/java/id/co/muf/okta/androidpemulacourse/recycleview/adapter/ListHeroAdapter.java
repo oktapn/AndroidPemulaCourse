@@ -17,22 +17,19 @@ import id.co.muf.okta.androidpemulacourse.R;
 import id.co.muf.okta.androidpemulacourse.recycleview.model.Hero;
 
 public class ListHeroAdapter extends RecyclerView.Adapter<ListHeroAdapter.ListViewHolder> {
-    private OnItemClickCallback onItemClickCallback;
-
-    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback;
-    }
-
     private ArrayList<Hero> listHero;
 
     public ListHeroAdapter(ArrayList<Hero> list) {
         this.listHero = list;
     }
-
+    private OnItemClickCallback onItemClickCallback;
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
+    }
 
     @NonNull
     @Override
-    public ListViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public ListViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_row_hero, viewGroup, false);
         return new ListViewHolder(view);
     }
@@ -56,13 +53,12 @@ public class ListHeroAdapter extends RecyclerView.Adapter<ListHeroAdapter.ListVi
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listHero.size();
     }
 
     class ListViewHolder extends RecyclerView.ViewHolder {
         ImageView imgPhoto;
         TextView tvName, tvFrom;
-
         ListViewHolder(View itemView) {
             super(itemView);
             imgPhoto = itemView.findViewById(R.id.img_item_photo);
